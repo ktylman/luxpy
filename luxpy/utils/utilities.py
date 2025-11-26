@@ -1141,8 +1141,11 @@ def save_pkl(filename, obj, compresslevel = 0, max_file_size_in_Mb = None, part_
     ext = ".pkl.gz" if compresslevel > 0 else ".pkl"
     filename = filename.removesuffix(ext)  # Ensure no trailing extension
     
-    max_bytes = int(max_file_size_in_Mb * 1024 * 1024)
-    n_parts = math.ceil(len(raw_data) / max_bytes)
+    if max_file_size_in_Mb is None:
+        n_parts = 1
+    else:
+        max_bytes = int(max_file_size_in_Mb * 1024 * 1024)
+        n_parts = math.ceil(len(raw_data) / max_bytes)
 
     if (max_file_size_in_Mb is None) or (n_parts <= 1):
         _open = (lambda file, mode: gzip.open(file, mode, compresslevel=compresslevel)) if compresslevel > 0 else open
