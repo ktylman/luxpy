@@ -140,7 +140,7 @@ def blackbody(cct, wl3 = None, n = None, relative = True):
     References:
         1. `CIE15:2018, “Colorimetry,” CIE, Vienna, Austria, 2018. <https://doi.org/10.25039/TR.015.2018>`_
     """
-    cct = float(cct)
+    cct = cct* 1.0 #turn to float
     if wl3 is None: wl3 = _WL3 
     if n is None: n = _BB['n']
     wl = getwlr(wl3)
@@ -486,7 +486,7 @@ def daylightphase(cct, wl3 = None, cct_is_nominal = False, force_daylight_below4
         J. Opt. Soc. Am., 54(8), 1031–1040. 
         <https://doi.org/10.1364/JOSA.54.001031>`_
     """
-    cct = float(cct)
+    cct = cct * 1.0 #turn to float
     if wl3 is None: wl3 = _WL3 
     if (cct < (4000.0)) & (force_daylight_below4000K == False):
         if verbosity is not None:

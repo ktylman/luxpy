@@ -32,7 +32,6 @@ Created on Wed Sep 30 14:17:02 2020
 """
 
 import numpy as np
-import matplotlib.pyplot as plt
 
 
 import numpy as np
